@@ -33,11 +33,7 @@ public class MainActivity extends BaseActivity<MainPresenter.MainUI> implements 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TextUtils.isEmpty(labelEntry.getText())) {
-                    showErrorMessage("Enter Value");
-                } else {
-                    presenter.validateLabelEntry(labelEntry.getText().toString());
-                }
+                presenter.validateLabelEntry(labelEntry.getText().toString());
             }
         });
 

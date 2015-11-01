@@ -1,7 +1,6 @@
 package aethernadev.com.cleanpvx.application;
 
 import com.aethernadev.main.MainPresenter;
-import com.aethernadev.module.ControllerModule;
 import com.aethernadev.module.PresenterModule;
 
 import dagger.Component;

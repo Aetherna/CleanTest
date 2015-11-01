@@ -28,5 +28,5 @@
         android:id="@+id/mainContent_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/mainContent_label" />
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

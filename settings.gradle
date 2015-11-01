@@ -1,1 +1,1 @@
-include ':app', ':presenter', ':controller', ':data'
+include ':app', ':presenter', ':controller', ':data', ':realmdomain'

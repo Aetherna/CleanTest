@@ -16,7 +16,6 @@ public class MainPresenter extends BasePresenter<MainPresenter.MainUI> {
 
     @Inject
     public MainPresenter(LabelsValidator labelsValidator   ) {
-
         this.labelsValidator = labelsValidator;
     }
 
