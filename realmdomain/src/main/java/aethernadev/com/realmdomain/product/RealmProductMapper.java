@@ -6,10 +6,16 @@ import com.aethernadev.product.PvxDateFormat;
 
 import org.joda.time.DateTime;
 
+import javax.inject.Inject;
+
 /**
  * Created by IT on 2015-11-03.
  */
 public class RealmProductMapper implements ProductMapper<RealmProduct> {
+
+    @Inject
+    public RealmProductMapper() {
+    }
 
     @Override
     public Product mapToProduct(RealmProduct realmProduct) {

@@ -40,4 +40,8 @@ public class Product {
     public void setIsVegan(boolean isVegan) {
         this.isVegan = isVegan;
     }
+
+    public boolean isEmpty() {
+        return name == null && barcode == null;
+    }
 }

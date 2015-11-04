@@ -18,10 +18,9 @@ import io.realm.RealmResults;
 public class RealmProductDaoImpl implements ProductDao {
 
     @Inject
-    private Realm realm;
+    Realm realm;
     @Inject
     RealmProductMapper realmProductMapper;
-
 
     @Inject
     public RealmProductDaoImpl(Realm realm) {
@@ -32,16 +31,19 @@ public class RealmProductDaoImpl implements ProductDao {
     @Override
     public Product createProduct(final Product product) {
 
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                RealmProduct realmProduct = realm.createObject(RealmProduct.class);
-                realmProduct.setName(product.getBarcode());
-                realmProduct.setBarcode(product.getName());
-                realmProduct.setExpiryDate(product.getExpiryDate().toString(PvxDateFormat.DATE_FORMAT));
-                realmProduct.setIsVegan(product.isVegan());
-            }
-        });
+        realm.beginTransaction();
+
+        RealmQuery<RealmProduct> query = realm.where(RealmProduct.class);
+        long lastIndex = query.count();
+
+        RealmProduct realmProduct = realm.createObject(RealmProduct.class);
+        realmProduct.setId((int) (lastIndex + 1));
+        realmProduct.setName(product.getName());
+        realmProduct.setBarcode(product.getBarcode());
+        realmProduct.setExpiryDate(product.getExpiryDate().toString(PvxDateFormat.DATE_FORMAT));
+        realmProduct.setIsVegan(product.isVegan());
+
+        realm.commitTransaction();
 
         return product;
     }
@@ -51,8 +53,12 @@ public class RealmProductDaoImpl implements ProductDao {
         RealmQuery<RealmProduct> query = realm.where(RealmProduct.class);
         query.equalTo("barcode", barcode);
         RealmResults<RealmProduct> results = query.findAll();
-        RealmProduct realmProduct = results.first();
-        return realmProductMapper.mapToProduct(realmProduct);
+        if (!results.isEmpty()) {
+            RealmProduct realmProduct = results.first();
+            return realmProductMapper.mapToProduct(realmProduct);
+        } else {
+            return new Product();
+        }
     }
 
     @Override

@@ -1,7 +1,5 @@
 package com.aethernadev.product;
 
-import com.sun.javafx.beans.annotations.NonNull;
-
 import java.util.List;
 
 /**

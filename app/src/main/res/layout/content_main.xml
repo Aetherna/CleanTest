@@ -29,4 +29,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
+    <Button
+        android:id="@+id/mainContent_insertDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="insert DB"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

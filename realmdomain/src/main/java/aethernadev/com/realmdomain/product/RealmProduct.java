@@ -15,6 +15,14 @@ public class RealmProduct extends RealmObject {
     private String expiryDate;
     private boolean isVegan;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
