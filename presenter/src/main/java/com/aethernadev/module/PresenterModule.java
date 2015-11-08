@@ -1,7 +1,8 @@
 package com.aethernadev.module;
 
-import com.aethernadev.LabelsValidator;
+import com.aethernadev.InputValidator;
 import com.aethernadev.main.MainPresenter;
+import com.aethernadev.product.ProductDao;
 
 import dagger.Module;
 import dagger.Provides;
@@ -13,7 +14,7 @@ import dagger.Provides;
 public class PresenterModule {
 
     @Provides
-    MainPresenter provideMainPresenter( LabelsValidator labelsValidator  ) {
-        return new MainPresenter(labelsValidator);
+    MainPresenter provideMainPresenter(InputValidator inputValidator, ProductDao productDao) {
+        return new MainPresenter(inputValidator, productDao);
     }
 }

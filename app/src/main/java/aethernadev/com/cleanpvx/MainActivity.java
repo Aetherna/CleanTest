@@ -3,7 +3,6 @@ package aethernadev.com.cleanpvx;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,23 +11,41 @@ import com.aethernadev.main.MainPresenter;
 import com.aethernadev.module.PresenterModule;
 import com.aethernadev.product.Product;
 
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 import org.joda.time.DateTime;
 
 import aethernadev.com.cleanpvx.application.AppComponent;
+
+import com.aethernadev.product.dagger.DBComponent;
+
 import aethernadev.com.cleanpvx.application.DaggerAppComponent;
+import aethernadev.com.cleanpvx.application.DaggerRealmDBComponent;
 import aethernadev.com.cleanpvx.base.BaseActivity;
 import aethernadev.com.realmdomain.product.module.DaoModule;
 import aethernadev.com.realmdomain.product.module.RealmModule;
 
+@EActivity
 public class MainActivity extends BaseActivity<MainPresenter.MainUI> implements MainPresenter.MainUI {
 
     private MainPresenter presenter;
 
-    private EditText labelEntry;
-    private TextView result;
-    private Button insertIntoDB;
+    @ViewById(R.id.main_barcodeEntry)
+    protected EditText barcodeEntry;
+    @ViewById(R.id.main_searchResult)
+    protected TextView searchResult;
+    @ViewById(R.id.main_insertDB)
+    protected Button insertIntoDB;
+    @ViewById(R.id.main_productName)
+    protected EditText productName;
+    @ViewById(R.id.main_productBarcode)
+    protected EditText productBarcode;
+    @ViewById(R.id.main_searchBarcode)
+    protected FloatingActionButton searchBarcode;
 
-    private AppComponent appComponent;
+    protected AppComponent appComponent;
+    protected DBComponent dbComponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,52 +54,46 @@ public class MainActivity extends BaseActivity<MainPresenter.MainUI> implements 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.validateLabelEntry(labelEntry.getText().toString());
-            }
-        });
+        setup();
+    }
+
+    private void setup() {
+        dbComponent = DaggerRealmDBComponent.builder().
+                realmModule(new RealmModule(this))
+                .daoModule(new DaoModule()).build();
 
         appComponent = DaggerAppComponent.builder()
                 .presenterModule(new PresenterModule())
-                .realmModule(new RealmModule(this))
-                .daoModule(new DaoModule())
+                .dBComponent(dbComponent)
                 .build();
         presenter = appComponent.mainPresenter();
 
         setupPresenter(presenter, this);
+    }
 
-        labelEntry = (EditText) findViewById(R.id.mainContent_label_entry);
-        result = (TextView) findViewById(R.id.mainContent_result);
-        insertIntoDB = (Button) findViewById(R.id.mainContent_insertDB);
+    @Click
+    public void main_insertDB() {
+        Product product = new Product();
+        product.setName(productName.getText().toString());
+        product.setBarcode(productBarcode.getText().toString());
+        product.setExpiryDate(new DateTime());
+        product.setIsVegan(true);
 
-        insertIntoDB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        presenter.addProduct(product);
+    }
 
-                Product product = new Product();
-                product.setName("Ala");
-                product.setBarcode("ALA11");
-                product.setExpiryDate(new DateTime());
-                product.setIsVegan(true);
-
-                appComponent.productDao().createProduct(product);
-
-                Product ala = appComponent.productDao().findProductByBarcode("ALA11");
-
-            }
-        });
+    @Click
+    public void main_searchBarcode(){
+        presenter.findProduct(barcodeEntry.getText().toString());
     }
 
     @Override
     public void showErrorMessage(String error) {
-        result.setText(error);
+        searchResult.setText(error);
     }
 
     @Override
     public void showMessage(String message) {
-        result.setText(message);
+        searchResult.setText(message);
     }
 }

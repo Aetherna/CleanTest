@@ -2,13 +2,13 @@ package com.aethernadev;
 
 import javax.inject.Inject;
 
-public class LabelsValidator {
+public class InputValidator {
 
     @Inject
-    public LabelsValidator() {
+    public InputValidator() {
     }
 
     public boolean validate(String label) {
-        return label.contains("a");
+        return label != null && !label.isEmpty();
     }
 }
