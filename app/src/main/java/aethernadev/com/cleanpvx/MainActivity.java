@@ -60,10 +60,9 @@ public class MainActivity extends BaseActivity<MainPresenter.MainUI> implements 
     private void setup() {
         dbComponent = DaggerRealmDBComponent.builder().
                 realmModule(new RealmModule(this))
-                .daoModule(new DaoModule()).build();
+                .build();
 
         appComponent = DaggerAppComponent.builder()
-                .presenterModule(new PresenterModule())
                 .dBComponent(dbComponent)
                 .build();
         presenter = appComponent.mainPresenter();
