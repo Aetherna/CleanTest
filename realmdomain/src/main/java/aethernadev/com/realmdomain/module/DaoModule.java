@@ -1,4 +1,4 @@
-package aethernadev.com.realmdomain.product.module;
+package aethernadev.com.realmdomain.module;
 
 import com.aethernadev.product.ProductDao;
 
@@ -15,11 +15,9 @@ import io.realm.Realm;
  */
 @Module(includes = RealmModule.class)
 public class DaoModule {
-    @Inject
-    Realm realm;
 
     @Provides
-    ProductDao provideProductDao() {
+    ProductDao provideProductDao(Realm realm) {
         return new RealmProductDaoImpl(realm);
     }
 }

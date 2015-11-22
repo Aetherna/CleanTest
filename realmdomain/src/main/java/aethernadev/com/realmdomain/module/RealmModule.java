@@ -1,4 +1,4 @@
-package aethernadev.com.realmdomain.product.module;
+package aethernadev.com.realmdomain.module;
 
 import android.content.Context;
 

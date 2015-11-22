@@ -1,10 +1,10 @@
-package aethernadev.com.cleanpvx.application;
+package aethernadev.com.cleanpvx.application.dagger;
 
 import com.aethernadev.product.dagger.DBComponent;
 
 import aethernadev.com.realmdomain.product.RealmProductDaoImpl;
-import aethernadev.com.realmdomain.product.module.DaoModule;
-import aethernadev.com.realmdomain.product.module.RealmModule;
+import aethernadev.com.realmdomain.module.DaoModule;
+import aethernadev.com.realmdomain.module.RealmModule;
 import dagger.Component;
 
 /**

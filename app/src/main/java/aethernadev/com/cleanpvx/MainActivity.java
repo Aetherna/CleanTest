@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.aethernadev.main.MainPresenter;
-import com.aethernadev.module.PresenterModule;
 import com.aethernadev.product.Product;
 
 import org.androidannotations.annotations.Click;
@@ -16,20 +15,16 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.joda.time.DateTime;
 
-import aethernadev.com.cleanpvx.application.AppComponent;
+import javax.inject.Inject;
 
-import com.aethernadev.product.dagger.DBComponent;
-
-import aethernadev.com.cleanpvx.application.DaggerAppComponent;
-import aethernadev.com.cleanpvx.application.DaggerRealmDBComponent;
+import aethernadev.com.cleanpvx.application.App;
 import aethernadev.com.cleanpvx.base.BaseActivity;
-import aethernadev.com.realmdomain.product.module.DaoModule;
-import aethernadev.com.realmdomain.product.module.RealmModule;
 
 @EActivity
 public class MainActivity extends BaseActivity<MainPresenter.MainUI> implements MainPresenter.MainUI {
 
-    private MainPresenter presenter;
+    @Inject
+    protected MainPresenter presenter;
 
     @ViewById(R.id.main_barcodeEntry)
     protected EditText barcodeEntry;
@@ -44,28 +39,15 @@ public class MainActivity extends BaseActivity<MainPresenter.MainUI> implements 
     @ViewById(R.id.main_searchBarcode)
     protected FloatingActionButton searchBarcode;
 
-    protected AppComponent appComponent;
-    protected DBComponent dbComponent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ((App) getApplication()).inject(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        setup();
-    }
-
-    private void setup() {
-        dbComponent = DaggerRealmDBComponent.builder().
-                realmModule(new RealmModule(this))
-                .build();
-
-        appComponent = DaggerAppComponent.builder()
-                .dBComponent(dbComponent)
-                .build();
-        presenter = appComponent.mainPresenter();
 
         setupPresenter(presenter, this);
     }
@@ -82,7 +64,7 @@ public class MainActivity extends BaseActivity<MainPresenter.MainUI> implements 
     }
 
     @Click
-    public void main_searchBarcode(){
+    public void main_searchBarcode() {
         presenter.findProduct(barcodeEntry.getText().toString());
     }
 

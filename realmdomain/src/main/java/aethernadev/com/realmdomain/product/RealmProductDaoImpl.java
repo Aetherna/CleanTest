@@ -5,6 +5,7 @@ import com.aethernadev.product.Product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 
@@ -33,11 +34,8 @@ public class RealmProductDaoImpl implements ProductDao {
 
         realm.beginTransaction();
 
-        RealmQuery<RealmProduct> query = realm.where(RealmProduct.class);
-        long lastIndex = query.count();
-
         RealmProduct realmProduct = realm.createObject(RealmProduct.class);
-        realmProduct.setId((int) (lastIndex + 1));
+        realmProduct.setUid(UUID.randomUUID().toString());
         realmProduct.setName(product.getName());
         realmProduct.setBarcode(product.getBarcode());
         realmProduct.setExpiryDate(product.getExpiryDate().toString(PvxDateFormat.DATE_FORMAT));

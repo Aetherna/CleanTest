@@ -1,9 +1,13 @@
-package aethernadev.com.cleanpvx.application;
+package aethernadev.com.cleanpvx.application.dagger;
+
+import android.app.Application;
+import android.content.Context;
 
 import com.aethernadev.main.MainPresenter;
 import com.aethernadev.module.PresenterModule;
 import com.aethernadev.product.dagger.DBComponent;
 
+import aethernadev.com.cleanpvx.MainActivity;
 import dagger.Component;
 
 /**
@@ -14,5 +18,8 @@ import dagger.Component;
 public interface AppComponent {
 
     MainPresenter mainPresenter();
+
+    void inject(MainActivity mainActivity);
+
 
 }

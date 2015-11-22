@@ -55,6 +55,7 @@ configurations.all { resolutionStrategy.force 'com.android.support:support-annot
 dependencies {
     compile project(':presenter')
     compile project(':realmdomain')
+    compile project(':ormlitedomain')
     compile fileTree(include: ['*.jar'], dir: 'libs')
 
     compile 'com.android.support:appcompat-v7:23.1.0'

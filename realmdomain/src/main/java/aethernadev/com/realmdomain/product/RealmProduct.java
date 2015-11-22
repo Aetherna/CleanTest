@@ -1,5 +1,7 @@
 package aethernadev.com.realmdomain.product;
 
+import java.util.UUID;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -9,18 +11,22 @@ import io.realm.annotations.PrimaryKey;
 public class RealmProduct extends RealmObject {
 
     @PrimaryKey
-    private int id;
+    private String uid;
     private String name;
     private String barcode;
     private String expiryDate;
     private boolean isVegan;
 
-    public int getId() {
-        return id;
+
+    public RealmProduct() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getName() {
