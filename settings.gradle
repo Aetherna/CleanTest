@@ -1,1 +1,1 @@
-include ':ormlitedomain', ':app', ':controller', ':data'
+include ':app', ':presenter', ':controller', ':data', ':realmdomain', ':ormlitedomain'
