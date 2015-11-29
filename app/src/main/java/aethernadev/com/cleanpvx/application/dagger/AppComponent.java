@@ -6,7 +6,7 @@ import com.aethernadev.product.dagger.DBComponent;
 
 import javax.inject.Singleton;
 
-import aethernadev.com.cleanpvx.AddProduct;
+import aethernadev.com.cleanpvx.addproduct.AddProduct;
 import aethernadev.com.cleanpvx.SearchProducts;
 import aethernadev.com.cleanpvx.Menu;
 import aethernadev.com.cleanpvx.component.ProductComponent;

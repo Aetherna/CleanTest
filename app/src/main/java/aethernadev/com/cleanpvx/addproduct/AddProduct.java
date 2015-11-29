@@ -1,9 +1,10 @@
-package aethernadev.com.cleanpvx;
+package aethernadev.com.cleanpvx.addproduct;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,6 +20,7 @@ import org.joda.time.format.DateTimeFormatter;
 
 import javax.inject.Inject;
 
+import aethernadev.com.cleanpvx.R;
 import aethernadev.com.cleanpvx.addproduct.ExpiryDatePicker;
 import aethernadev.com.cleanpvx.application.App;
 import aethernadev.com.cleanpvx.base.BaseActivity;
@@ -26,12 +28,13 @@ import aethernadev.com.cleanpvx.validation.FieldValidator;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTouch;
 
 public class AddProduct extends BaseActivity<AddProductPresenter.MainUI> implements AddProductPresenter.MainUI, DatePickerDialog.OnDateSetListener {
 
-    public static final String DIALOG = "dialog";
+    private static final String DIALOG = "dialog";
     @Bind(R.id.content_add_product)
-    View container;
+    protected View container;
 
     @Bind(R.id.createProduct)
     protected Button insertIntoDB;
@@ -60,17 +63,23 @@ public class AddProduct extends BaseActivity<AddProductPresenter.MainUI> impleme
         ((App) getApplication()).inject(this);
 
         setupPresenter(presenter, this);
-        setupExpiryDate();
-
     }
 
-    private void setupExpiryDate() {
+    @OnTouch(R.id.productExpiryDate)
+    public boolean chooseExpiryDate(View view, MotionEvent motionEvent) {
 
-        expiryDate.setOnFocusChangeListener((View v, boolean focused) -> {
-            if(focused){
-                showDatePicker();
-            }
-        });
+        if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+            view.requestFocus();
+            showDatePicker();
+            return true;
+        }
+        return false;
+    }
+
+    private void showDatePicker() {
+        ExpiryDatePicker expiryDatePicker = ExpiryDatePicker.instance();
+        expiryDatePicker.setCancelable(false);
+        expiryDatePicker.show(getSupportFragmentManager(), DIALOG);
     }
 
     @OnClick(R.id.createProduct)
@@ -88,11 +97,6 @@ public class AddProduct extends BaseActivity<AddProductPresenter.MainUI> impleme
         product.setIsVegan(isVegan.isChecked());
 
         presenter.addProduct(product);
-    }
-
-    public void showDatePicker() {
-        ExpiryDatePicker expiryDatePicker = ExpiryDatePicker.instance();
-        expiryDatePicker.show(getSupportFragmentManager(), DIALOG);
     }
 
     private DateTime getExpiryDate() {

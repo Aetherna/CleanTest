@@ -5,7 +5,7 @@ import android.app.Application;
 import com.aethernadev.module.PresenterModule;
 import com.aethernadev.product.dagger.DBComponent;
 
-import aethernadev.com.cleanpvx.AddProduct;
+import aethernadev.com.cleanpvx.addproduct.AddProduct;
 import aethernadev.com.cleanpvx.SearchProducts;
 import aethernadev.com.cleanpvx.Menu;
 import aethernadev.com.cleanpvx.application.dagger.AppComponent;

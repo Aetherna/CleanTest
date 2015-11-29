@@ -11,9 +11,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SearchProducts"
-            android:label="@string/app_name"
+            android:label="@string/menu_searchProducts"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Menu"
             android:label="@string/title_activity_menu"
@@ -25,9 +25,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddProduct"
-            android:label="@string/title_activity_add_product"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".addproduct.AddProduct"
+            android:label="@string/menu_addProduct"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -5,6 +5,8 @@ import android.content.Intent;
 
 import javax.inject.Inject;
 
+import aethernadev.com.cleanpvx.addproduct.AddProduct;
+
 /**
  * Created by Aetherna on 2015-11-28.
  */

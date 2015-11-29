@@ -4,9 +4,8 @@
     <string name="product_component_label">Products:</string>
     <string name="title_activity_menu">Menu</string>
     <string name="menu_searchProducts">Search Products</string>
-    <string name="menu_addProduct">Add product</string>
-    <string name="menu_productComponent">Product component</string>
-    <string name="title_activity_add_product">AddProduct</string>
+    <string name="menu_addProduct">Add Product</string>
+    <string name="menu_productComponent">Product Component</string>
     <string name="create_product">Create product</string>
     <string name="product_barcode">Product barcode:</string>
     <string name="product_name">Product name:</string>

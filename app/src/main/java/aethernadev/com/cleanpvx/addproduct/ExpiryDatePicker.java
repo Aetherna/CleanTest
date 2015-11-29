@@ -23,8 +23,6 @@ public class ExpiryDatePicker extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         DateTime now = DateTime.now();
-        DatePickerDialog dialog = new DatePickerDialog(getActivity(), (DatePickerDialog.OnDateSetListener) getActivity(), now.getYear(), now.getMonthOfYear(), now.getDayOfMonth());
-        dialog.setCancelable(false);
-        return dialog;
+        return new DatePickerDialog(getActivity(), (DatePickerDialog.OnDateSetListener) getActivity(), now.getYear(), now.getMonthOfYear(), now.getDayOfMonth());
     }
 }
