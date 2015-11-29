@@ -1,25 +1,34 @@
 package aethernadev.com.cleanpvx.application.dagger;
 
-import android.app.Application;
-import android.content.Context;
-
-import com.aethernadev.main.MainPresenter;
+import com.aethernadev.main.SearchProductsPresenter;
 import com.aethernadev.module.PresenterModule;
 import com.aethernadev.product.dagger.DBComponent;
 
-import aethernadev.com.cleanpvx.MainActivity;
+import javax.inject.Singleton;
+
+import aethernadev.com.cleanpvx.AddProduct;
+import aethernadev.com.cleanpvx.SearchProducts;
+import aethernadev.com.cleanpvx.Menu;
+import aethernadev.com.cleanpvx.component.ProductComponent;
 import dagger.Component;
 
 /**
- * Created by IT on 2015-11-01.
+ * Created by Aetherna on 2015-11-01.
  */
+@Singleton
 @Component(dependencies = DBComponent.class,
-        modules = PresenterModule.class)
+        modules = {PresenterModule.class,
+                AndroidModule.class})
 public interface AppComponent {
 
-    MainPresenter mainPresenter();
+    SearchProductsPresenter mainPresenter();
 
-    void inject(MainActivity mainActivity);
+    ProductComponent productComponent();
 
 
+    void inject(SearchProducts searchProducts);
+
+    void inject(Menu menuActivity);
+
+    void inject(AddProduct addProduct);
 }

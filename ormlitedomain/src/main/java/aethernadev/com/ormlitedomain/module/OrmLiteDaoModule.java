@@ -10,7 +10,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by IT on 2015-11-17.
+ * Created by Aetherna on 2015-11-17.
  */
 @Module(includes = OrmLiteDbHelperModule.class)
 public class OrmLiteDaoModule {

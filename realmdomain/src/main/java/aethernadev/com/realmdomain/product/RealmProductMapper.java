@@ -9,7 +9,7 @@ import org.joda.time.DateTime;
 import javax.inject.Inject;
 
 /**
- * Created by IT on 2015-11-03.
+ * Created by Aetherna on 2015-11-03.
  */
 public class RealmProductMapper implements ProductMapper<RealmProduct> {
 
@@ -25,6 +25,11 @@ public class RealmProductMapper implements ProductMapper<RealmProduct> {
         product.setExpiryDate(PvxDateFormat.DATE_FORMAT.parseDateTime(realmProduct.getExpiryDate()));
         product.setIsVegan(realmProduct.isVegan());
         return product;
+    }
+
+    @Override
+    public RealmProduct mapFromProduct(Product product) {
+        throw new UnsupportedOperationException();
     }
 
 }

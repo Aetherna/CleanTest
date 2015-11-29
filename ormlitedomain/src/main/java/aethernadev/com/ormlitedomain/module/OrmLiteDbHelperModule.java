@@ -2,29 +2,32 @@ package aethernadev.com.ormlitedomain.module;
 
 import android.content.Context;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+
+import javax.inject.Singleton;
+
 import aethernadev.com.ormlitedomain.databasehelper.OrmLiteDatabaseHelper;
 import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by IT on 2015-11-17.
+ * Created by Aetherna on 2015-11-17.
  */
 @Module
 public class OrmLiteDbHelperModule {
 
-    //    protected OpenHelperManager openHelperManager;
     private Context context;
 
     public OrmLiteDbHelperModule(Context context) {
         this.context = context;
-//        this.openHelperManager = new OpenHelperManager();
-//        OrmLiteDatabaseHelper opDatabaseHelper = new OrmLiteDatabaseHelper(context);
-//        this.openHelperManager.setHelper(opDatabaseHelper);
+        OrmLiteDatabaseHelper opDatabaseHelper = new OrmLiteDatabaseHelper(context);
+        OpenHelperManager.setHelper(opDatabaseHelper);
     }
 
+    @Singleton
     @Provides
     OrmLiteDatabaseHelper provideOrmLiteDatabaseHelper() {
-//        return openHelperManager.getHelper(context, OrmLiteDatabaseHelper.class);
-        return new OrmLiteDatabaseHelper(context);
+        return OpenHelperManager.getHelper(context, OrmLiteDatabaseHelper.class);
     }
+
 }

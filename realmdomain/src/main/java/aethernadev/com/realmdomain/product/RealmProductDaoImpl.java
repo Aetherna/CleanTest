@@ -14,7 +14,7 @@ import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
 /**
- * Created by IT on 2015-11-03.
+ * Created by Aetherna on 2015-11-03.
  */
 public class RealmProductDaoImpl implements ProductDao {
 

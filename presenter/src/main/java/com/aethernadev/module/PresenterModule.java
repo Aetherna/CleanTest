@@ -1,20 +1,32 @@
 package com.aethernadev.module;
 
-import com.aethernadev.InputValidator;
-import com.aethernadev.main.MainPresenter;
+import com.aethernadev.component.ProductComponentAddProductUseCase;
+import com.aethernadev.component.ProductPresenter;
+import com.aethernadev.component.ProductViewModelMapper;
+import com.aethernadev.controller.AddProductUseCase;
+import com.aethernadev.main.SearchProductsPresenter;
 import com.aethernadev.product.ProductDao;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by IT on 2015-11-01.
+ * Created by Aetherna on 2015-11-01.
  */
 @Module
 public class PresenterModule {
 
+    @Singleton
     @Provides
-    MainPresenter provideMainPresenter(InputValidator inputValidator, ProductDao productDao) {
-        return new MainPresenter(inputValidator, productDao);
+    SearchProductsPresenter provideMainPresenter(ProductDao productDao) {
+        return new SearchProductsPresenter(productDao);
+    }
+
+    @Singleton
+    @Provides
+    ProductPresenter provideProductPresenter(ProductComponentAddProductUseCase productComponentAddProductUseCase, ProductViewModelMapper mapper) {
+        return new ProductPresenter(productComponentAddProductUseCase, mapper);
     }
 }

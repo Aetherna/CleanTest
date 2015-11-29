@@ -1,23 +1,31 @@
 package aethernadev.com.ormlitedomain.product;
 
+import android.util.Log;
+
 import com.aethernadev.product.Product;
 import com.aethernadev.product.ProductDao;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import dagger.Provides;
+
 /**
- * Created by IT on 2015-11-17.
+ * Created by Aetherna on 2015-11-17.
  */
 public class OLProductDaoImpl implements ProductDao {
 
 
     @Inject
     Dao<OLProduct, Integer> productDao;
+    @Inject
+    OLProductMapper productMapper;
 
     @Inject
     public OLProductDaoImpl(Dao<OLProduct, Integer> productDao) {
@@ -26,7 +34,13 @@ public class OLProductDaoImpl implements ProductDao {
 
     @Override
     public Product createProduct(Product product) {
-        return null;
+        OLProduct olProduct = productMapper.mapFromProduct(product);
+        try {
+            productDao.create(olProduct);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return product;
     }
 
     @Override
@@ -35,11 +49,11 @@ public class OLProductDaoImpl implements ProductDao {
         try {
             List<OLProduct> result = productDao.queryForEq("name", barcode);
             if (!result.isEmpty()) {
-                result.get(0);
+               return productMapper.mapToProduct(result.get(0));
             }
         } catch (SQLException e) {
-
-
+            Log.e("TODO :>", e.getMessage());
+            e.printStackTrace();
         }
 
         return new Product();
@@ -47,6 +61,23 @@ public class OLProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> getAllProducts() {
-        return null;
+
+        List<Product> products = new ArrayList<>();
+
+        try {
+            List<OLProduct> results = productDao.queryForAll();
+            if (results == null) {
+                return products;
+            }
+
+            for (OLProduct olProduct : results) {
+                products.add(productMapper.mapToProduct(olProduct));
+            }
+
+        } catch (SQLException e) {
+            Log.e("TODO :>", e.getMessage());
+            e.printStackTrace();
+        }
+        return products;
     }
 }

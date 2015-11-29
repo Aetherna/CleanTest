@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import aethernadev.com.ormlitedomain.product.OLProduct;
 
 /**
- * Created by IT on 2015-11-17.
+ * Created by Aetherna on 2015-11-17.
  */
 public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
 

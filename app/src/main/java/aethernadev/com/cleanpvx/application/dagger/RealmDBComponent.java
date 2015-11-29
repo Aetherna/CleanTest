@@ -8,7 +8,7 @@ import aethernadev.com.realmdomain.module.RealmModule;
 import dagger.Component;
 
 /**
- * Created by IT on 2015-11-08.
+ * Created by Aetherna on 2015-11-08.
  */
 @Component(modules = {RealmModule.class, DaoModule.class})
 public interface RealmDBComponent extends DBComponent {

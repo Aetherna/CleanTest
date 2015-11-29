@@ -6,7 +6,7 @@ import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.aethernadev.main.MainPresenter;
+import com.aethernadev.main.SearchProductsPresenter;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,13 +21,13 @@ import static org.mockito.Mockito.times;
  * Created by Marta on 09/11/2015.
  */
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public class SearchProductsTest {
 
     @Rule
-    public ActivityTestRule<MainActivity_> activityTestRule = new ActivityTestRule<>(MainActivity_.class);
+    public ActivityTestRule<SearchProducts> activityTestRule = new ActivityTestRule<>(SearchProducts.class);
 
     @Mock
-    private MainPresenter presenter;
+    private SearchProductsPresenter presenter;
 
     @Test
     public void testShouldBeOk() {

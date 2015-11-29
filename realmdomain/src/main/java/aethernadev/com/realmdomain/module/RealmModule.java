@@ -7,7 +7,7 @@ import dagger.Provides;
 import io.realm.Realm;
 
 /**
- * Created by IT on 2015-11-04.
+ * Created by Aetherna on 2015-11-04.
  */
 @Module
 public class RealmModule {

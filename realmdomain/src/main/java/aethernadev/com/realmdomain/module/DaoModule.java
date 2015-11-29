@@ -11,7 +11,7 @@ import io.realm.Realm;
 
 
 /**
- * Created by IT on 2015-11-04.
+ * Created by Aetherna on 2015-11-04.
  */
 @Module(includes = RealmModule.class)
 public class DaoModule {
