@@ -38,7 +38,7 @@ public class RealmProductDaoImpl implements ProductDao {
         realmProduct.setUid(UUID.randomUUID().toString());
         realmProduct.setName(product.getName());
         realmProduct.setBarcode(product.getBarcode());
-        realmProduct.setExpiryDate(product.getExpiryDate().toString(PvxDateFormat.DATE_FORMAT));
+        realmProduct.setExpiryDate(product.getExpiryDate().toString(AppDateFormat.DATE_FORMAT));
         realmProduct.setIsVegan(product.isVegan());
 
         realm.commitTransaction();

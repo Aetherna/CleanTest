@@ -6,6 +6,6 @@ import org.joda.time.format.DateTimeFormatter;
 /**
  * Created by Aetherna on 2015-11-03.
  */
-public class PvxDateFormat {
+public class AppDateFormat {
     public static final DateTimeFormatter DATE_FORMAT = DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss");
 }

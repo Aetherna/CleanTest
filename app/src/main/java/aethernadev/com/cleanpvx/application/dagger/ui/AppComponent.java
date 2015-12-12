@@ -1,4 +1,4 @@
-package aethernadev.com.cleanpvx.application.dagger;
+package aethernadev.com.cleanpvx.application.dagger.ui;
 
 import com.aethernadev.main.SearchProductsPresenter;
 import com.aethernadev.module.PresenterModule;

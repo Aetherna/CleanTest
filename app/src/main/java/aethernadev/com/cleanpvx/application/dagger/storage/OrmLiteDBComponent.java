@@ -1,4 +1,4 @@
-package aethernadev.com.cleanpvx.application.dagger;
+package aethernadev.com.cleanpvx.application.dagger.storage;
 
 import android.content.Context;
 

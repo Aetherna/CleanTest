@@ -2,9 +2,7 @@ package aethernadev.com.realmdomain.product;
 
 import com.aethernadev.product.Product;
 import com.aethernadev.product.ProductMapper;
-import com.aethernadev.product.PvxDateFormat;
-
-import org.joda.time.DateTime;
+import com.aethernadev.product.AppDateFormat;
 
 import javax.inject.Inject;
 
@@ -22,7 +20,7 @@ public class RealmProductMapper implements ProductMapper<RealmProduct> {
         Product product = new Product();
         product.setName(realmProduct.getName());
         product.setBarcode(realmProduct.getBarcode());
-        product.setExpiryDate(PvxDateFormat.DATE_FORMAT.parseDateTime(realmProduct.getExpiryDate()));
+        product.setExpiryDate(AppDateFormat.DATE_FORMAT.parseDateTime(realmProduct.getExpiryDate()));
         product.setIsVegan(realmProduct.isVegan());
         return product;
     }

@@ -48,7 +48,7 @@ public class AddProduct extends BaseActivity<AddProductPresenter.MainUI> impleme
     protected Switch isVegan;
 
     @Inject
-    FieldValidator inputValidator;
+    AddProductForm addProductForm;
 
     @Inject
     AddProductPresenter presenter;
@@ -84,24 +84,18 @@ public class AddProduct extends BaseActivity<AddProductPresenter.MainUI> impleme
 
     @OnClick(R.id.createProduct)
     public void createProduct() {
-        if (!inputValidator.validateNotEmpty(productName)
-                || !inputValidator.validateNotEmpty(productBarcode)
-                || !inputValidator.validateNotEmpty(expiryDate)) {
-            return;
+
+        addProductForm.addProductName(productName);
+        addProductForm.addProductBarcode(productBarcode);
+        addProductForm.addExpiryDate(expiryDate);
+        addProductForm.addIsVegan(isVegan);
+
+        if (addProductForm.validate()) {
+            presenter.addProduct(addProductForm.getProduct());
+        } else {
+            showErrorMessage("Invalid product data");
         }
 
-        Product product = new Product();
-        product.setName(productName.getText().toString());
-        product.setBarcode(productBarcode.getText().toString());
-        product.setExpiryDate(getExpiryDate());
-        product.setIsVegan(isVegan.isChecked());
-
-        presenter.addProduct(product);
-    }
-
-    private DateTime getExpiryDate() {
-        DateTimeFormatter dateFormatter = DateTimeFormat.forPattern(getString(R.string.app_DateFormat));
-        return dateFormatter.parseDateTime(expiryDate.getText().toString());
     }
 
     @Override
@@ -117,7 +111,6 @@ public class AddProduct extends BaseActivity<AddProductPresenter.MainUI> impleme
         isVegan.setChecked(false);
 
         Snackbar.make(container, "Product created", Snackbar.LENGTH_INDEFINITE).show();
-
     }
 
     @Override

@@ -8,9 +8,9 @@ import com.aethernadev.product.dagger.DBComponent;
 import aethernadev.com.cleanpvx.addproduct.AddProduct;
 import aethernadev.com.cleanpvx.SearchProducts;
 import aethernadev.com.cleanpvx.Menu;
-import aethernadev.com.cleanpvx.application.dagger.AppComponent;
-import aethernadev.com.cleanpvx.application.dagger.DaggerAppComponent;
-import aethernadev.com.cleanpvx.application.dagger.DaggerOrmLiteDBComponent;
+import aethernadev.com.cleanpvx.application.dagger.storage.DaggerOrmLiteDBComponent;
+import aethernadev.com.cleanpvx.application.dagger.ui.AppComponent;
+import aethernadev.com.cleanpvx.application.dagger.ui.DaggerAppComponent;
 import aethernadev.com.ormlitedomain.module.OrmLiteDbHelperModule;
 
 /**
