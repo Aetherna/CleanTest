@@ -1,10 +1,9 @@
 package com.aethernadev.module;
 
-import com.aethernadev.component.ProductComponentAddProductUseCase;
+import com.aethernadev.product.FindProductUseCase;
 import com.aethernadev.component.ProductPresenter;
 import com.aethernadev.component.ProductViewModelMapper;
-import com.aethernadev.controller.AddProductUseCase;
-import com.aethernadev.main.SearchProductsPresenter;
+import com.aethernadev.search.SearchProductsPresenter;
 import com.aethernadev.product.ProductDao;
 
 import javax.inject.Singleton;
@@ -26,7 +25,7 @@ public class PresenterModule {
 
     @Singleton
     @Provides
-    ProductPresenter provideProductPresenter(ProductComponentAddProductUseCase productComponentAddProductUseCase, ProductViewModelMapper mapper) {
-        return new ProductPresenter(productComponentAddProductUseCase, mapper);
+    ProductPresenter provideProductPresenter(FindProductUseCase findProductUseCase, ProductViewModelMapper mapper) {
+        return new ProductPresenter(findProductUseCase, mapper);
     }
 }

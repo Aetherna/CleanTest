@@ -1,11 +1,8 @@
 package aethernadev.com.cleanpvx;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 
 import javax.inject.Inject;
@@ -21,7 +18,7 @@ public class Menu extends AppCompatActivity {
     Button searchProducts;
     @Bind(R.id.menu_addProduct)
     Button addProduct;
-    @Bind(R.id.menu_productComponent)
+    @Bind(R.id.menu_productsList)
     Button productComponent;
 
     @Inject
@@ -46,6 +43,11 @@ public class Menu extends AppCompatActivity {
     @OnClick(R.id.menu_addProduct)
     public void goToAddProduct() {
         navigator.goToAddProduct(this);
+    }
+
+    @OnClick(R.id.menu_productsList)
+    public void goToProductsList() {
+        navigator.goToProductsList(this);
     }
 
 

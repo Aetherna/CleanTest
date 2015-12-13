@@ -1,21 +1,18 @@
-package aethernadev.com.cleanpvx;
+package aethernadev.com.cleanpvx.searchproducts;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.aethernadev.main.SearchProductsPresenter;
-import com.aethernadev.product.Product;
-
-import org.joda.time.DateTime;
+import com.aethernadev.search.SearchProductsPresenter;
 
 import javax.inject.Inject;
 
+import aethernadev.com.cleanpvx.R;
 import aethernadev.com.cleanpvx.application.App;
 import aethernadev.com.cleanpvx.base.BaseActivity;
 import aethernadev.com.cleanpvx.component.ProductComponent;
@@ -30,17 +27,13 @@ public class SearchProducts extends BaseActivity<SearchProductsPresenter.MainUI>
     @Inject
     protected ProductComponent productComponent;
 
-    @Bind(R.id.main_barcodeEntry)
-    protected EditText barcodeEntry;
-    @Bind(R.id.main_searchResult)
+    @Bind(R.id.search_searchResult)
     protected TextView searchResult;
-    @Bind(R.id.main_searchBarcode)
-    protected FloatingActionButton searchBarcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
         ((App) getApplication()).inject(this);
 
@@ -49,12 +42,6 @@ public class SearchProducts extends BaseActivity<SearchProductsPresenter.MainUI>
 
         setupPresenter(presenter, this);
         productComponent.setup(this, this);
-    }
-
-
-    @OnClick(R.id.main_searchBarcode)
-    public void main_searchBarcode() {
-        presenter.findProduct(barcodeEntry.getText().toString());
     }
 
     @Override

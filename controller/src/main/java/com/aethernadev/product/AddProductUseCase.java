@@ -1,4 +1,4 @@
-package com.aethernadev.controller;
+package com.aethernadev.product;
 
 import com.aethernadev.InputValidator;
 import com.aethernadev.product.Product;

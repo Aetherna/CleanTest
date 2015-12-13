@@ -3,6 +3,7 @@ package com.aethernadev.component;
 import com.aethernadev.base.BasePresenter;
 import com.aethernadev.base.UI;
 import com.aethernadev.product.Product;
+import com.aethernadev.product.FindProductUseCase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,12 +18,12 @@ import rx.functions.Action1;
 public class ProductPresenter extends BasePresenter<ProductPresenter.ProductUI> {
 
 
-    ProductComponentAddProductUseCase addProductUseCase;
+    FindProductUseCase findProductUseCase;
     ProductViewModelMapper mapper;
 
     @Inject
-    public ProductPresenter(ProductComponentAddProductUseCase addProductUseCase, ProductViewModelMapper mapper) {
-        this.addProductUseCase = addProductUseCase;
+    public ProductPresenter(FindProductUseCase findProductUseCase, ProductViewModelMapper mapper) {
+        this.findProductUseCase = findProductUseCase;
         this.mapper = mapper;
     }
 
@@ -30,7 +31,7 @@ public class ProductPresenter extends BasePresenter<ProductPresenter.ProductUI> 
 
         ui.showValidationProgressBar();
 
-        Observable.just(addProductUseCase.addProduct(product))
+        Observable.just(findProductUseCase.findProduct(product))
                 .delay(1, TimeUnit.SECONDS)
                 .subscribe(new Action1<Product>() {
                     @Override

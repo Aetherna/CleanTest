@@ -6,7 +6,8 @@ import com.aethernadev.module.PresenterModule;
 import com.aethernadev.product.dagger.DBComponent;
 
 import aethernadev.com.cleanpvx.addproduct.AddProduct;
-import aethernadev.com.cleanpvx.SearchProducts;
+import aethernadev.com.cleanpvx.productslist.ProductsList;
+import aethernadev.com.cleanpvx.searchproducts.SearchProducts;
 import aethernadev.com.cleanpvx.Menu;
 import aethernadev.com.cleanpvx.application.dagger.storage.DaggerOrmLiteDBComponent;
 import aethernadev.com.cleanpvx.application.dagger.ui.AppComponent;
@@ -50,5 +51,9 @@ public class App extends Application {
 
     public void inject(AddProduct addProduct) {
         appComponent.inject(addProduct);
+    }
+
+    public void inject(ProductsList productsList) {
+        appComponent.inject(productsList);
     }
 }

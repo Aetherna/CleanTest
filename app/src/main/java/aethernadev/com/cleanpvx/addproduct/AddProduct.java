@@ -23,6 +23,7 @@ import javax.inject.Inject;
 import aethernadev.com.cleanpvx.R;
 import aethernadev.com.cleanpvx.addproduct.ExpiryDatePicker;
 import aethernadev.com.cleanpvx.application.App;
+import aethernadev.com.cleanpvx.application.dagger.appsettings.AppDateFormat;
 import aethernadev.com.cleanpvx.base.BaseActivity;
 import aethernadev.com.cleanpvx.validation.FieldValidator;
 import butterknife.Bind;
@@ -52,6 +53,8 @@ public class AddProduct extends BaseActivity<AddProductPresenter.MainUI> impleme
 
     @Inject
     AddProductPresenter presenter;
+    @Inject
+    AppDateFormat appDateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,8 +118,7 @@ public class AddProduct extends BaseActivity<AddProductPresenter.MainUI> impleme
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-        DateTime pickedDate = new DateTime(year, month, day, 0, 0);
-        DateTimeFormatter dateFormatter = DateTimeFormat.forPattern(getString(R.string.app_DateFormat));
-        expiryDate.setText(pickedDate.toString(dateFormatter));
+        DateTime pickedDate = new DateTime(year, month + 1, day, 0, 0);
+        expiryDate.setText(pickedDate.toString(appDateFormat.getDateTimeFormat()));
     }
 }

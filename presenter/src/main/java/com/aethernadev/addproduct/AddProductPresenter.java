@@ -2,7 +2,7 @@ package com.aethernadev.addproduct;
 
 import com.aethernadev.base.BasePresenter;
 import com.aethernadev.base.UI;
-import com.aethernadev.controller.AddProductUseCase;
+import com.aethernadev.product.AddProductUseCase;
 import com.aethernadev.product.Product;
 
 import javax.inject.Inject;

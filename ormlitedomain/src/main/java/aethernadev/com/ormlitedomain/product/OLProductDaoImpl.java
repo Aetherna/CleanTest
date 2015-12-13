@@ -49,7 +49,7 @@ public class OLProductDaoImpl implements ProductDao {
         try {
             List<OLProduct> result = productDao.queryForEq("name", barcode);
             if (!result.isEmpty()) {
-               return productMapper.mapToProduct(result.get(0));
+                return productMapper.mapToProduct(result.get(0));
             }
         } catch (SQLException e) {
             Log.e("TODO :>", e.getMessage());

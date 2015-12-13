@@ -6,13 +6,15 @@ import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.aethernadev.main.SearchProductsPresenter;
+import com.aethernadev.search.SearchProductsPresenter;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+
+import aethernadev.com.cleanpvx.searchproducts.SearchProducts;
 
 import static org.mockito.Mockito.times;
 
@@ -31,7 +33,7 @@ public class SearchProductsTest {
 
     @Test
     public void testShouldBeOk() {
-        Espresso.onView(ViewMatchers.withId(R.id.main_searchResult)).perform(ViewActions.click());
+        Espresso.onView(ViewMatchers.withId(R.id.search_searchResult)).perform(ViewActions.click());
         Mockito.verify(presenter, times(1)).findProduct("");
 
     }

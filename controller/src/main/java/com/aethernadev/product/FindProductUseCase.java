@@ -1,4 +1,4 @@
-package com.aethernadev.component;
+package com.aethernadev.product;
 
 import com.aethernadev.product.Product;
 import com.aethernadev.product.ProductDao;
@@ -11,16 +11,16 @@ import javax.inject.Inject;
 /**
  * Created by Aetherna on 2015-11-27.
  */
-public class ProductComponentAddProductUseCase {
+public class FindProductUseCase {
 
     ProductDao productDao;
 
     @Inject
-    public ProductComponentAddProductUseCase(ProductDao productDao) {
+    public FindProductUseCase(ProductDao productDao) {
         this.productDao = productDao;
     }
 
-    public Product addProduct(String barcode) {
+    public Product findProduct(String barcode) {
 
         return productDao.findProductByBarcode(barcode);
     }

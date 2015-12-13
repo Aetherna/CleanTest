@@ -1,8 +1,7 @@
-package com.aethernadev.main;
+package com.aethernadev.search;
 
 import com.aethernadev.base.BasePresenter;
 import com.aethernadev.base.UI;
-import com.aethernadev.controller.AddProductUseCase;
 import com.aethernadev.product.Product;
 import com.aethernadev.product.ProductDao;
 
@@ -26,10 +25,6 @@ public class SearchProductsPresenter extends BasePresenter<SearchProductsPresent
 
 
     public void findProduct(String barcode) {
-//        if (!addProductUseCase.validate(barcode)) {
-//            ui.showErrorMessage("Insert value");
-//            return;
-//        }
 
         Product found = productDao.findProductByBarcode(barcode);
         if (found.isEmpty()) {
