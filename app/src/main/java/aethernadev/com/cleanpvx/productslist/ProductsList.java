@@ -36,7 +36,7 @@ public class ProductsList extends BaseActivity<ProductsListPresenter.MainUI> imp
     ProductsListAdapter productsListAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    final protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_list);
         ButterKnife.bind(this, this);

@@ -1,13 +1,8 @@
 package com.aethernadev.product;
 
-import com.aethernadev.InputValidator;
-import com.aethernadev.product.Product;
-import com.aethernadev.product.ProductDao;
-
 import javax.inject.Inject;
 
 public class AddProductUseCase {
-
 
     ProductDao productDao;
 
@@ -16,7 +11,11 @@ public class AddProductUseCase {
         this.productDao = productDao;
     }
 
-    public void addProduct(Product product) throws Exception {
+    public void addProduct(Product product) {
+
+        if (product == null || product.isEmpty()) {
+            throw new IllegalStateException("Product not initialized properly");
+        }
 
         productDao.createProduct(product);
 
