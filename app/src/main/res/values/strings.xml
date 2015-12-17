@@ -5,7 +5,7 @@
     <string name="menu">Menu</string>
     <string name="menu_productsComponent">Products Component</string>
     <string name="menu_addProduct">Add Product</string>
-    <string name="menu_productsList">Product's List</string>
+    <string name="menu_productsList">Products List</string>
     <string name="create_product">Create product</string>
     <string name="product_barcode">Product barcode:</string>
     <string name="product_name">Product name:</string>
