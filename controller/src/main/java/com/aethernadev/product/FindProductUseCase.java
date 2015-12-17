@@ -1,5 +1,6 @@
 package com.aethernadev.product;
 
+import com.aethernadev.TextUtils;
 import com.aethernadev.product.Product;
 import com.aethernadev.product.ProductDao;
 
@@ -15,12 +16,19 @@ public class FindProductUseCase {
 
     ProductDao productDao;
 
+    TextUtils textUtils;
+
     @Inject
-    public FindProductUseCase(ProductDao productDao) {
+    public FindProductUseCase(ProductDao productDao, TextUtils textUtils) {
         this.productDao = productDao;
+        this.textUtils = textUtils;
     }
 
     public Product findProduct(String barcode) {
+
+        if (textUtils.isNonSpaceEmpty(barcode)) {
+            throw new IllegalStateException("Barcode must be supplied");
+        }
 
         return productDao.findProductByBarcode(barcode);
     }

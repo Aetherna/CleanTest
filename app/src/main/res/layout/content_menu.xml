@@ -17,7 +17,7 @@
         android:id="@+id/menu_searchProducts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_searchProducts" />
+        android:text="@string/menu_productsComponent" />
 
     <Button
         android:id="@+id/menu_addProduct"
@@ -29,6 +29,6 @@
         android:id="@+id/menu_productsList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/menu_productComponent" />
+        android:text="@string/menu_productsList" />
 
 </LinearLayout>

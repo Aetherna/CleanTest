@@ -1,10 +1,9 @@
 package aethernadev.com.cleanpvx.addproduct;
 
-import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.Switch;
 
-import com.aethernadev.InputValidator;
+import com.aethernadev.TextUtils;
 import com.aethernadev.product.Product;
 
 import org.joda.time.DateTime;
@@ -19,7 +18,7 @@ import aethernadev.com.cleanpvx.application.dagger.appsettings.AppDateFormat;
 public class AddProductForm {
 
     @Inject
-    InputValidator inputValidator;
+    TextUtils textUtils;
     @Inject
     AppDateFormat appDateFormat;
 
@@ -44,7 +43,7 @@ public class AddProductForm {
 
         String dateAsString = expiryDateField.getText().toString();
 
-        if (TextUtils.isEmpty(dateAsString)) {
+        if (android.text.TextUtils.isEmpty(dateAsString)) {
             expiryDate = null;
             return;
         }
@@ -53,8 +52,8 @@ public class AddProductForm {
     }
 
     public boolean validate() {
-        return inputValidator.validate(productName)
-                && inputValidator.validate(productBarcode)
+        return !textUtils.isEmpty(productName)
+                && !textUtils.isEmpty(productBarcode)
                 && expiryDate != null;
     }
 

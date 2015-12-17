@@ -9,7 +9,6 @@ import javax.inject.Inject;
  */
 public class FindAllProductsUseCase {
 
-
     ProductDao productDao;
 
     @Inject

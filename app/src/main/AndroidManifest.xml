@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".searchproducts.SearchProducts"
-            android:label="@string/menu_searchProducts"
+            android:label="@string/menu_productsComponent"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity

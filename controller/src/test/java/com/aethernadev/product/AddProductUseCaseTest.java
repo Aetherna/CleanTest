@@ -47,9 +47,28 @@ public class AddProductUseCaseTest {
     @Test
     public void shouldThrowIllegalStateOnNull() {
 
+        //when
         try {
             testObject.addProduct(null);
             Assert.fail();
+
+        //then
+        } catch (IllegalStateException ex) {
+            verifyZeroInteractions(productDao);
+        }
+    }
+
+    @Test
+    public void shouldThrowIllegalStateOnEmpty() {
+        //having
+        Product emptyProduct = new Product();
+
+        //when
+        try {
+            testObject.addProduct(emptyProduct);
+            Assert.fail();
+
+        //then
         } catch (IllegalStateException ex) {
             verifyZeroInteractions(productDao);
         }

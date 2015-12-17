@@ -1,5 +1,7 @@
 package com.aethernadev.product;
 
+import com.aethernadev.TextUtils;
+
 import javax.inject.Inject;
 
 public class AddProductUseCase {
