@@ -25,8 +25,7 @@ public class AddProductPresenter extends BasePresenter<AddProductPresenter.MainU
             addProductUseCase.addProduct(product);
             ui.showProductCreated();
         } catch (Exception e) {
-            e.printStackTrace();
-            ui.showErrorMessage("Lol db exception :O");
+            ui.showErrorMessage("Lol exception :O");
         }
     }
 
