@@ -1,4 +1,4 @@
-package aethernadev.com.cleanpvx;
+package com.aethernadev.ui;
 
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import aethernadev.com.cleanpvx.searchproducts.SearchProducts;
+import com.aethernadev.ui.searchproducts.SearchProducts;
 
 import static org.mockito.Mockito.times;
 

@@ -1,4 +1,4 @@
-package aethernadev.com.realmdomain;
+package com.aethernadev.realmdomain;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

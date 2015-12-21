@@ -1,4 +1,4 @@
-package aethernadev.com.ormlitedomain;
+package com.aethernadev.ormlitedomain;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

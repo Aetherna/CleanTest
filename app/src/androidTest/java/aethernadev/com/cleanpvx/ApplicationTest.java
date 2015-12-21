@@ -1,4 +1,4 @@
-package aethernadev.com.cleanpvx;
+package com.aethernadev.ui;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
